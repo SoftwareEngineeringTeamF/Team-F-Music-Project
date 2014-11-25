@@ -5,9 +5,8 @@ if (isset ($_SESSION['userid']))
 	header("Location: user.php?u=" . $SESSION["username"]);
 ?>
 <?php
-include_once 'password.php';
-include_once 'init.php';
-include_once 'connect.php';
+require 'init.php';
+require 'password.php';
 
 if (isset($_POST['username'])) {
 	if(isset($_POST['username'])) 	$u = $_POST['username'];

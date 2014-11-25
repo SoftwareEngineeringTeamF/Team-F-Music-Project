@@ -1,5 +1,5 @@
 <?php
-include "init.php";
+require 'init.php';
 
 //if the user has a session going, they shouldn't be seeing the login page.
 //so redirect them to their calendar

@@ -1,8 +1,8 @@
 <?php
 
 // Connect to server and select databse.
-include_once "init.php";
-include_once "password.php";
+require "init.php";
+require "password.php";
 
 // username and password sent from form 
 if (!isset ($_POST['myusername']) || !isset ($_POST['mypassword'])) {
