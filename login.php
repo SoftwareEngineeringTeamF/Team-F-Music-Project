@@ -1,13 +1,12 @@
 <?php
 include "init.php";
 
-//if the user has a session going, they shouldn't be seeing the login 
-page.
+//if the user has a session going, they shouldn't be seeing the login page.
 //so redirect them to their calendar
 if (isset ($_SESSION['userId'])) {
 	header("location:index.php");
 }
-
+?>
 <form name="form1" method="post" action="checklogin.php<?php 
 if(isset($_GET['r'])) echo "?r=" . $_GET['r'];?>">
 	<table width="300" border="0" align="center" cellpadding="0" 
@@ -48,5 +47,6 @@ value="Login"></td>
 
 <p align="center"> <a href="signup.php">Register new account?</a>   </p>
 
+<?php
 include_once "footer.php";
 ?>
