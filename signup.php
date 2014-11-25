@@ -21,12 +21,12 @@ if (isset($_POST['username'])) {
 	$ip = preg_replace('#[^0-9.]#', '', getenv('REMOTE_ADDR'));
 	// DUPLICATE DATA CHECKS FOR USERNAME AND EMAIL
 	$sql = "SELECT userid FROM users WHERE username='$u' LIMIT 1";
-	$query = mysqli_query($db_conx, $sql);
-	$u_check = mysqli_num_rows($query);
+	$result = $db_conx->query($sql);
+	$u_check = $result->num_rows;
 	// -------------------------------------------
 	$sql = "SELECT userid FROM users WHERE email='$e' LIMIT 1";
-	$query = mysqli_query($db_conx, $sql);
-	$e_check = mysqli_num_rows($query);
+	$query = $db_conx->query($sql);
+	$e_check = $query->num_rows;
 	// FORM DATA ERROR HANDLING
 	if ($u == "" || $fn == "" || $ln == "" || $e == "" || $p == "") {
 		echo "The form submission is missing values.";
@@ -59,31 +59,35 @@ if (isset($_POST['username'])) {
 							echo 'Passwords do not match';
 							exit();
 						} else {
-						// END FORM DATA ERROR HANDLING
-						// Begin Insertion of data into the database
-						// Hash the password and apply your own mysterious unique salt
+							echo "passwords match ok <br>";
+							// END FORM DATA ERROR HANDLING
+							// Begin Insertion of data into the database
+							// Hash the password and apply your own mysterious unique salt
 
-						$p_hash = password_hash($p, PASSWORD_DEFAULT,['cost' => 12]); //md5($p);
-						// Add user info into the database table for the main site table
-						$sql = "INSERT INTO users (username, password, email, activated, hash_act, firstname, lastname, ip, signup, lastlogin, )       
-								        VALUES('$u', '$p_hash', '$e', true, '$signup_key', '$fn', '$ln', '$ip', now(), now()";
-						$query = mysqli_query($db_conx, $sql);
-
-						echo "Signup successful";
-						exit();
-						// Email the user their activation link
-						/*if (send_activation_email($e, $signup_key)) {
-							echo "Signup Successful.  Please check your email to activate your account";
-						} else {
-							echo "Oops, and error occurred.  Please wait a few minutes and try again.";
-						}*/
+							$p_hash = password_hash($p, PASSWORD_DEFAULT,['cost' => 12]); //md5($p);
+							// Add user info into the database table for the main site table
+							$sql = "INSERT INTO users (username, password, email, activated, hash_act, firstname, lastname, ip, signup, lastlogin )       
+								        VALUES('$u', '$p_hash', '$e', 1, '$signup_key', '$fn', '$ln', '$ip', now(), now())";
+							$query = $db_conx->query($sql);
+							$signup_ok = $db_conx->affected_rows;
+							if ( $signup_ok > 0 ) {
+								echo "Signup successful";
+								// Email the user their activation link
+								/*if (send_activation_email($e, $signup_key)) {
+									echo "Signup Successful.  Please check your email to activate your account";
+								} else {
+									echo "Oops, and error occurred.  Please wait a few minutes and try again.";
+								}*/
+							} else {
+								echo "Oops, an error occurred.  Please try again. <br>";
+								echo $db_conx->error;
+								exit();
+							}
 						}
 					}
 				}
 			}
 		}
-		echo "Oops, an error occurred.  Please try again.";
-		exit();
 	}
 } else {
 ?>
