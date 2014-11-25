@@ -9,7 +9,7 @@ require 'connect.php';
 
 //all of our important database functions are in here.
 require 'general.php';
-require 'password.php';
+//require 'password.php';
 
 include_once "header.php";
 ?>
