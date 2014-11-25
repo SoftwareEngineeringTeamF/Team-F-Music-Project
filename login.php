@@ -3,7 +3,7 @@ include "init.php";
 
 //if the user has a session going, they shouldn't be seeing the login page.
 //so redirect them to their calendar
-if (isset ($_SESSION['userId'])) {
+if (isset ($_SESSION['userid'])) {
 	header("location:index.php");
 }
 ?>
