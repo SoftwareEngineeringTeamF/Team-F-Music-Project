@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 25, 2014 at 12:57 AM
+-- Generation Time: Nov 25, 2014 at 01:33 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.4.34
 
@@ -59,7 +59,8 @@ CREATE TABLE IF NOT EXISTS `songs` (
   `uploader` int(11) NOT NULL,
   `Title` varchar(255) NOT NULL,
   `Artist` varchar(255) NOT NULL,
-  PRIMARY KEY (`songid`)
+  PRIMARY KEY (`songid`),
+  UNIQUE KEY `songid` (`songid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -73,6 +74,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
