@@ -1,12 +1,11 @@
 <?php
-include_once "init.php";
-include_once "connect.php";
+require 'init.php';
 
 $sql = "SELECT username FROM users where AND activated='1' ORDER BY RAND() LIMIT 32";
-$query= mysqli_query($db_conx, $sql);
+$query= $db_conx->query($sql);
 $userlist= "";
-if( mysqli_num_rows( $query ) > 0 ) {
-	while ($row =mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+if( $query->num_rows > 0 ) {
+	while ($row=mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$u= $row["username"];
 		$userlist .= '<a href="user.php?u=' .$u.'" title="'.$u.'"></a>';
 	} 
