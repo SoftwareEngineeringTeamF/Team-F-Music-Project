@@ -46,15 +46,12 @@ E_USER_WARNING);
         $resultLength = 0;
         switch ($algo) {
             case PASSWORD_BCRYPT:
-                // Note that this is a C constant, but not exposed to 
-PHP, so we don't define it here.
+                // Note that this is a C constant, but not exposed to PHP, so we don't define it here.
                 $cost = 10;
                 if (isset($options['cost'])) {
                     $cost = $options['cost'];
                     if ($cost < 4 || $cost > 31) {
-                        trigger_error(sprintf("password_hash(): Invalid 
-bcrypt cost parameter specified: 
-%d", $cost), E_USER_WARNING);
+                        trigger_error(sprintf("password_hash(): Invalid bcrypt cost parameter specified: %d", $cost), E_USER_WARNING);
                         return null;
                     }
                 }
