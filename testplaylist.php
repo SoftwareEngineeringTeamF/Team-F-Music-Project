@@ -24,6 +24,7 @@ function echoplaylist(Playlist $p) {
     }
     echo "<BR>";
 }
+
 //test load
 $p0 = new Playlist();
 echo "<strong>Create Playlist Object and load 1 from db</strong><br>";
@@ -33,6 +34,22 @@ if($p0->getPlaylistId() == 1) echo "PASS ID<BR>"; else echo "FAIL ID<BR>";
 if($p0->getOwnerId() == 1) echo "PASS OwnerID<BR>"; else echo "FAIL OwnerID<BR>";
 if($p0->getTitle() == "Title") echo "PASS Title<BR>"; else echo "FAIL Title<BR>";
 if($p0->getDescription() == "Description") echo "PASS Description<BR>"; else echo "FAIL Description<BR>"; echo "<HR>";
+
+//test create
+
+//test loaded create
+
+//test set owner
+
+//test set title
+
+//test set description
+
+//test promote
+
+//test demote
+
+//delete
 
 include_once 'footer.php';
 ?>
