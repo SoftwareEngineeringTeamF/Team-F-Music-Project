@@ -46,13 +46,20 @@ class Song {
 		$sql = "SELECT * from songs WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		//echo "[SONG] MATCHING IDS FOUND: " . $result->num_rows . "<br>";
-		$row = $result->fetch_assoc();
-		$this->title = $row['title'];
-		//echo "[SONG] REFRESH TITLE: " . $this->title . "<BR>";
-		$this->artist = $row['artist'];
-		//echo "[SONG] REFRESH ARTIST: " . $this->artist . "<BR>";
-		$this->ownerid = $row['ownerid'];
-		//echo "[SONG] REFRESH OWNERID: " . $this->ownerid . "<BR>";
+		if($result->num_rows == 1) {
+			$row = $result->fetch_assoc();
+			$this->title = $row['title'];
+			//echo "[SONG] REFRESH TITLE: " . $this->title . "<BR>";
+			$this->artist = $row['artist'];
+			//echo "[SONG] REFRESH ARTIST: " . $this->artist . "<BR>";
+			$this->ownerid = $row['ownerid'];
+			//echo "[SONG] REFRESH OWNERID: " . $this->ownerid . "<BR>";
+		} else {
+			$this->songid = NULL;
+			$this->ownerid = NULL;
+			$this->artist = NULL;
+			$this->title = NULL;
+		}
 	}
 	
 	public function setOwnerId( $ownerid ) {
@@ -108,7 +115,26 @@ class Song {
 		} 
 		//$this->refresh();
 	}
-	
+	public function delete() {
+		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
+		// Evaluate the connection
+		if ($db_conx->connect_errno > 0) {
+			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			die();
+		}
+		$sql = "DELETE FROM songs WHERE songid='" . $this->songid ."'";
+		$result = $db_conx->query($sql);
+		if($db_conx->affected_rows == 0) {
+			echo "[SONG] FAILED: delete";
+			die();
+		} else {
+			$this->songid = NULL;
+			$this->ownerid = NULL;
+			$this->artist = NULL;
+			$this->title = NULL;
+		} 
+	}
+		
 	public function getArtist() {
 		return $this->artist;
 	}
