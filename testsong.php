@@ -36,6 +36,7 @@ if($s1->getSongId() == $id) echo "PASS ID<BR>"; else echo "FAIL ID<BR>";
 if($s1->getOwnerId() == 1) echo "PASS OwnerID<BR>"; else echo "FAIL OwnerID<BR>";
 if($s1->getArtist() == $artist) echo "PASS Artist<BR>"; else echo "FAIL Artist<BR>";
 if($s1->getTitle() == $title) echo "PASS Title<BR>"; else echo "FAIL Title<BR>"; echo "<HR>";
+unset($s1);
 
 //test load last
 echo "<strong>New Object, load last created</strong><br>";
@@ -77,7 +78,5 @@ if($s2->getOwnerId() == 2) echo "PASS"; else echo "FAIL"; echo "<BR><hr>";
 echo "<strong>Delete created from db</strong><br>";
 $s2->delete();
 echosong($s2);
-echosong($s1);
-$s1->refresh();
-echosong($s1);
+unset ($s2);
 ?>
