@@ -5,7 +5,7 @@ class Song {
 	private $songid;
 	private $title;
 	private $artist;
-	private $owner;
+	private $ownerid;
 	
 	public function __construct( $songid ) {
 		$this->$songid = $songid;
@@ -18,7 +18,7 @@ class Song {
 		$row = $query->fetch_array(MYSQLI_ASSOC);
 		$title = $row['title'];
 		$artist = $row['artist'];
-		$owner = $row['owner'];
+		$ownerid = $row['ownerid'];
 	}
 	
 	public function setArtist( $artist ) {
@@ -30,7 +30,7 @@ class Song {
 	
 	public function setTitle( $title ) {
 		$this->title = $title;
-		$sql = "UPDATE songs SET title='" . $artist . "' WHERE songid='" . $this->songid ."'";
+		$sql = "UPDATE songs SET title='" . $title . "' WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		$this->refresh();
 	}
@@ -43,8 +43,12 @@ class Song {
 		return $this->title;
 	}
 	
-	public function getId() {
-		return $this->id;
+	public function getOwnerId() {
+		return $this->ownerid;
+	}
+	
+	public function getSongId() {
+		return $this->songid;
 	}
 }
 ?>
