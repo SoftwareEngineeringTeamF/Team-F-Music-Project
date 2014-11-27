@@ -30,7 +30,7 @@ class Song {
 		$sql = "INSERT INTO songs( songid, ownerid, title, artist ) VALUES ( NULL, '" . $ownerid . "', '" . $title . "', '" . $artist . "')";
 		$result = $db_conx->query($sql);
 		$this->songid = $db_conx->insert_id;
-		echo "[SONG] CREATE ID: " . $this->songid . "<br>";
+		//echo "[SONG] CREATE ID: " . $this->songid . "<br>";
 		return $this->songid;
 	}
 	
@@ -42,14 +42,17 @@ class Song {
 			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
-		echo "[SONG] REFRESHING ID: " . $this->songid . "<br>";
+		//echo "[SONG] REFRESHING ID: " . $this->songid . "<br>";
 		$sql = "SELECT * from songs WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
-		echo "[SONG] MATCHING IDS FOUND: " . $result->num_rows . "<br>";
+		//echo "[SONG] MATCHING IDS FOUND: " . $result->num_rows . "<br>";
 		$row = $result->fetch_assoc();
-		$this->title = $row['title']; echo "[SONG] REFRESH TITLE: " . $this->title . "<BR>";
-		$this->artist = $row['artist']; echo "[SONG] REFRESH ARTIST: " . $this->artist . "<BR>";
-		$this->ownerid = $row['ownerid']; echo "[SONG] REFRESH OWNERID: " . $this->ownerid . "<BR>";
+		$this->title = $row['title'];
+		//echo "[SONG] REFRESH TITLE: " . $this->title . "<BR>";
+		$this->artist = $row['artist'];
+		//echo "[SONG] REFRESH ARTIST: " . $this->artist . "<BR>";
+		$this->ownerid = $row['ownerid'];
+		//echo "[SONG] REFRESH OWNERID: " . $this->ownerid . "<BR>";
 	}
 	
 	public function setOwnerId( $ownerid ) {
@@ -123,3 +126,4 @@ class Song {
 	}
 }
 ?>
+

@@ -12,7 +12,7 @@ function random_string($length) {
 }
 
 function echosong( Song $s0 ){
-	echo "ID: " . $s0->getSongId() . "<br>OI: " . $s0->getOwnerId() . "<br>AR: " . $s0->getArtist() . "<br>TI: " . $s0->getTitle() . "<br>";
+	//echo "ID: " . $s0->getSongId() . "<br>OI: " . $s0->getOwnerId() . "<br>AR: " . $s0->getArtist() . "<br>TI: " . $s0->getTitle() . "<br>";
 }
 
 //test load
