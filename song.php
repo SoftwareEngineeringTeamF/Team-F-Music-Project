@@ -10,6 +10,7 @@ class Song {
 	}
 	
 	public function load( $songid ) {
+        //echo "[SONG] Loading song ID: " . $songid . "<br>";
 		$this->songid = $songid;	
 		$this->refresh();
 	}
