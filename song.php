@@ -1,11 +1,10 @@
 <?php
-//require 'connect.php';
-
 class Song {
 	private $songid;
 	private $title;
 	private $artist;
 	private $ownerid;
+	private $db_conx;
 	
 	public function __construct() {
 	}
@@ -42,6 +41,7 @@ class Song {
 			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
+		
 		//echo "[SONG] REFRESHING ID: " . $this->songid . "<br>";
 		$sql = "SELECT * from songs WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
@@ -122,6 +122,7 @@ class Song {
 			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
+		
 		$sql = "DELETE FROM songs WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {

@@ -58,8 +58,8 @@ function change_pass($id,$pass) {
 	mysql_query("UPDATE `users` SET `password` = '$pass' WHERE `id` = '$id'");
 }
 
-function random_string() {
-	$length = 20;
+function random_string($length) {
+	if( $length <= 0 ) $length = 20;
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {

@@ -1,22 +1,12 @@
 <?php
-require 'song.php';
-
-function random_string($length) {
-	if( $length <0 ) $length = 20;
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, strlen($characters) - 1)];
-    }
-    return $randomString;
-}
+require 'init.php';
 
 function echosong( Song $s0 ){
 	echo "ID: " . $s0->getSongId() . "<br>OI: " . $s0->getOwnerId() . "<br>AR: " . $s0->getArtist() . "<br>TI: " . $s0->getTitle() . "<br>";
 }
 
 //test load
-$s0 = new Song();
+$s0 = new Song($db_conx);
 echo "<strong>Create Song Object and load 1 from db</strong><br>";
 $s0->load(1);
 echosong($s0);
@@ -79,4 +69,6 @@ echo "<strong>Delete created from db</strong><br>";
 $s2->delete();
 echosong($s2);
 unset ($s2);
+
+include_once "footer.php";
 ?>
