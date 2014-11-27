@@ -25,12 +25,12 @@ if(!isset($_GET[p])){
         echo "NO PLAYLISTS";
     }
 } else {
-    $sql = "SELECT songs.artist, songs.title, members.index FROM songs JOIN members on songs.songid = members.songid WHERE members.playlistid = '" . $_GET['p'] . "'  ORDER BY members.index";
+    $sql = "SELECT songs.artist, songs.title, members.listindex FROM songs JOIN members on songs.songid = members.songid WHERE members.playlistid = '" . $_GET['p'] . "'  ORDER BY members.listindex";
     $query= $db_conx->query($sql);
     $playlistlist= "<table><tr><th>index</th><th>artist</th><th>title</th></tr>";
     if( $query->num_rows > 0 ) {
         while ( $row=$query->fetch_assoc() ) {
-            $playlistlist .= "<tr><td>" . ($row['index']+1) . "</td><td>" . $row['artist'] . "</td><td>" . $row['title'] . "</td></tr>";
+            $playlistlist .= "<tr><td>" . ($row['listindex']+1) . "</td><td>" . $row['artist'] . "</td><td>" . $row['title'] . "</td></tr>";
         }
         $playlistlist .= "</table>";
 
