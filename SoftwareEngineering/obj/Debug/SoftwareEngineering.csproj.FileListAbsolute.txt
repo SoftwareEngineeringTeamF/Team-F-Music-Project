@@ -1,0 +1,48 @@
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\SoftwareEngineering.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\SoftwareEngineering.pdb
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\Antlr3.Runtime.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\EntityFramework.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\Microsoft.Web.Infrastructure.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\Newtonsoft.Json.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Mvc.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Optimization.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Providers.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Razor.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Deployment.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Razor.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\WebGrease.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\EntityFramework.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\Newtonsoft.Json.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Mvc.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Razor.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Deployment.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Razor.xml
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\obj\Debug\SoftwareEngineering.csprojResolveAssemblyReference.cache
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\obj\Debug\SoftwareEngineering.dll
+z:\documents\visual studio 2012\Projects\SoftwareEngineering\SoftwareEngineering\obj\Debug\SoftwareEngineering.pdb
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\SoftwareEngineering.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\SoftwareEngineering.pdb
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\Antlr3.Runtime.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\EntityFramework.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\Newtonsoft.Json.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Mvc.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Optimization.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Providers.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Razor.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Razor.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\WebGrease.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\EntityFramework.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\Newtonsoft.Json.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Mvc.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.Razor.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\bin\System.Web.WebPages.Razor.xml
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\obj\Debug\SoftwareEngineering.csprojResolveAssemblyReference.cache
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\obj\Debug\SoftwareEngineering.dll
+C:\Users\Travis\Desktop\SoftwareEngineering\SoftwareEngineering\obj\Debug\SoftwareEngineering.pdb
