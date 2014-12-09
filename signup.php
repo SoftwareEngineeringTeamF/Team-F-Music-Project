@@ -1,12 +1,11 @@
 <?php
-
-// universal check for session
-if (isset ($_SESSION['userid']))
-	header("Location: user.php?u=" . $SESSION["username"]);
-?>
-<?php
 require 'init.php';
-require 'password.php';
+$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
+// Evaluate the connection
+if ($db_conx->connect_errno > 0) {
+    echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+    die();
+}
 
 if (isset($_POST['username'])) {
 	if(isset($_POST['username'])) 	$u = $_POST['username'];
@@ -67,7 +66,7 @@ if (isset($_POST['username'])) {
 							$p_hash = password_hash($p, PASSWORD_DEFAULT,['cost' => 12]); //md5($p);
 							// Add user info into the database table for the main site table
 							$sql = "INSERT INTO users (username, password, email, activated, hash_act, firstname, lastname, ip, signup, lastlogin )       
-								        VALUES('$u', '$p_hash', '$e', 1, '$signup_key', '$fn', '$ln', '$ip', now(), now())";
+								        VALUES('$u', '$p', '$e', 1, '$signup_key', '$fn', '$ln', '$ip', now(), now())";
 							$query = $db_conx->query($sql);
 							$signup_ok = $db_conx->affected_rows;
 							if ( $signup_ok > 0 ) {
@@ -94,23 +93,18 @@ if (isset($_POST['username'])) {
 <div id="pageMiddle">
   <h3>Sign Up Here</h3>
   <form name="signupform" method="post" action="signup.php">
-    <div>Username: </div>
-    <input name="username" type="text" maxlength="16">
+    <table>
+        <tr><td>Username:</td><td><input name="username" type="text" maxlength="16"></td></tr>
 
-    <div>First Name: </div>
-    <input name="firstname" type="text" maxlength="30">
-	<div>Last Name: </div>
-    <input name="lastname" type="text" maxlength="30">
+    <tr><td>First Name:</td><td><input name="firstname" type="text" maxlength="30"></td></tr>
+	<tr><td>Last Name:</td><td><input name="lastname" type="text" maxlength="30"></td></tr>
 
-    <div>Email Address:</div>
-    <input name="email" type="text" maxlength="88">
-    <div>Create Password:</div>
-    <input name="pass1" type="password" maxlength="16">
-    <div>Confirm Password:</div>
-    <input name="pass2" type="password" maxlength="16">
+    <tr><td>Email Address:</td><td><input name="email" type="text" maxlength="88"></td></tr>
+    <tr><td>Create Password:</td><td><input name="pass1" type="password" maxlength="16"></td></tr>
+    <tr><td>Confirm Password:</td><td><input name="pass2" type="password" maxlength="16"></td></tr>
     
-    <br /><br />
-    <input type="submit" name="Submit" value="Create Account">
+    <tr><td><input type="submit" name="Submit" value="Create Account"></td></tr>
+    </table>
   </form>
 </div>
 <?php } 
