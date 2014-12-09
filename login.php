@@ -1,10 +1,11 @@
 <?php
-require 'init.php';
+include_once 'init.php';
 
 //if the user has a session going, they shouldn't be seeing the login page.
 //so redirect them to their calendar
 if (isset ($_SESSION['user'])) {
-	$body .=  "Already logged in.";
+	$body .=  "Already logged in. Redirecting.";
+    header( "Refresh:5; url=./index.php" );
 } else {
     $body .= '<form name="form1" method="post" action="checklogin.php';
     if(isset($_GET['r'])) $body .= "?r=" . $_GET['r'];

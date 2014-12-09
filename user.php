@@ -23,7 +23,7 @@ class User {
         $db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 
@@ -41,19 +41,19 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
         
         $sql = "INSERT INTO users ( `username`, `password`, `email`, `activated`, `hash_act`, `firstname`, `lastname`, `ip`, `signup`, `lastlogin`) VALUES ( '" . $username . "', '" . $password . "', '" . $email . "', '1', '', '" . $firstname . "', '" . $lastname . "', '', CURRENT_TIME(), CURRENT_TIME())";
         $query = $db_conx->query($sql);
 		if ( $db_conx->affected_rows > 0 ) {
-	        //echo "Signup successful";
+	        //$body .= "Signup successful";
             $this->load( $db_conx->insert_id );
             return true;
 		} else {
-		    echo "Oops, an error occurred.  Please try again. <br>";
-			echo $db_conx->error;
+		    $body .= "Oops, an error occurred.  Please try again. <br>";
+			$body .= $db_conx->error;
 			exit();
             return false;
         }
@@ -64,7 +64,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -91,7 +91,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -108,7 +108,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -124,7 +124,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -140,7 +140,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -156,7 +156,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -172,7 +172,7 @@ class User {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -203,4 +203,3 @@ class User {
     public function getPassword() { return $this->password; }
 }
 ?>
-

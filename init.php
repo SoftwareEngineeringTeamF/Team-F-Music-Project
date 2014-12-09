@@ -2,7 +2,7 @@
 $stime = microtime(true);
 ?>
 <?php
-session_start();
+
 
 //connect to database. if that fails, die on the spot.
 //require 'connect.php';
@@ -12,6 +12,8 @@ require 'general.php';
 require 'playlist.php';
 require 'user.php';
 //require 'password.php';
+
+session_start();
 
 include_once "header.php";
 ?>

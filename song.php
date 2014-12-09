@@ -18,7 +18,7 @@ class Song {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -59,7 +59,7 @@ class Song {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -75,7 +75,7 @@ class Song {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -91,7 +91,7 @@ class Song {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -107,7 +107,7 @@ class Song {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
@@ -133,4 +133,3 @@ class Song {
 	public function getSongId() { return $this->songid;	}
 }
 ?>
-

@@ -1,10 +1,18 @@
 <?php
 include_once 'init.php';
-include_once 'connect.php';
+
+$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
+// Evaluate the connection
+if ($db_conx->connect_errno > 0) {
+   echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+   die();
+}
+
+$u = $_SESSION['user']->getUserId();
 $playlistlist = "";
 if(!isset($_GET[p])){
 
-    $sql = "SELECT * FROM playlists ORDER BY playlistid";
+    $sql = "SELECT * FROM playlists WHERE ownerid='" . $u . "' ORDER BY playlistid";
     $query= $db_conx->query($sql);
     $playlistlist .= "<table><tr><th>playlistid</th><th>ownerid</th><th>public</th><th>title</th><th>description</tr>";
     if( $query->num_rows > 0 ) {
