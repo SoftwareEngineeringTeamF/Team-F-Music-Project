@@ -33,7 +33,8 @@ if(!isset($_GET[p])){
                 $playlistlist .= "<li>" . "<a href=\"#\" data-src=\"./songs/". $row['songid'] . ".mp3\">" . $row['artist'] . " - " . $row['title'] . "</a></li>";
             }
             $playlistlist .= "</ol></div>";
-            $playlistlist .= '<div id="shortcuts"><div><h1>Keyboard shortcuts:</h1><p><em>&rarr;</em> Next track</p><p><em>&larr;</em> Previous track</p><p><em>Space</em> Play/pause</p></div></div>';
+            // keyboard controls
+            // .= '<div id="shortcuts"><div><h1>Keyboard shortcuts:</h1><p><em>&rarr;</em> Next track</p><p><em>&larr;</em> Previous track</p><p><em>Space</em> Play/pause</p></div></div>';
 
 
         } else {
