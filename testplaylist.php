@@ -35,6 +35,20 @@ if($p0->getOwnerId() == 1) echo "PASS OwnerID<BR>"; else echo "FAIL OwnerID<BR>"
 if($p0->getTitle() == "Title") echo "PASS Title<BR>"; else echo "FAIL Title<BR>";
 if($p0->getDescription() == "Description") echo "PASS Description<BR>"; else echo "FAIL Description<BR>"; echo "<HR>";
 
+//test promote
+echo "<strong>Promoting Playlist Object 1</strong><br>";
+$s1 = $p0->getSong(1);
+$s0 = $p0->getSong(0);
+if( !$p0->promoteSong(1) ) { echo "PROMOTE OPERATION FAILED"; die(); }
+//echoplaylist($p0);
+if($p0->getSong(1) != $s0 || $p0->getSong(0) != $s1) echo "FAIL"; else echo "PASS"; echo "<HR>";
+
+//test demote
+echo "<strong>Demoting Playlist Object 0</strong><br>";
+if( !$p0->demoteSong(0) ) { echo "DEMOTE OPERATION FAILED"; die(); }
+//echoplaylist($p0);
+if($p0->getSong(1) != $s1 || $p0->getSong(0) != $s0) echo "FAIL"; else echo "PASS"; echo "<HR>";
+
 //test create
 
 //test loaded create
@@ -44,10 +58,6 @@ if($p0->getDescription() == "Description") echo "PASS Description<BR>"; else ech
 //test set title
 
 //test set description
-
-//test promote
-
-//test demote
 
 //delete
 
