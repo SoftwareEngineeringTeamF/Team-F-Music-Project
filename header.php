@@ -36,8 +36,8 @@ background: rgba(240, 240, 240, 0.7); }
         #shortcuts { display: none; }
       }
     </style>
-    <script src="./jquery.js"></script>
-    <script src="../audiojs/audio.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script src="./audio.min.js"></script>
     <script>
       $(function() { 
         // Setup the player to autoplay the next track
