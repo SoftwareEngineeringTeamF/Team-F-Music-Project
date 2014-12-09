@@ -3,7 +3,7 @@ require 'init.php';
 $db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 // Evaluate the connection
 if ($db_conx->connect_errno > 0) {
-    echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
+    $body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
     die();
 }
 
@@ -28,37 +28,30 @@ if (isset($_POST['username'])) {
 	$e_check = $query->num_rows;
 	// FORM DATA ERROR HANDLING
 	if ($u == "" || $fn == "" || $ln == "" || $e == "" || $p == "") {
-		echo "The form submission is missing values.";
-		exit ();
+		$body .= "The form submission is missing values.";
 	} else {
 		if ($u_check > 0) {
-			echo "The username you entered is already taken";
-			exit ();
+			$body .= "The username you entered is already taken";
 		} else {
-			echo "username ok <br>";
+			$body .= "username ok <br>";
 			if ($e_check > 0) {
-				echo "That email address is already in use in the system";
-				exit ();
+				$body .= "That email address is already in use in the system";
 			} else if (!check_email($e)) {
-				echo "The email address you have entered is not valid.";
-				exit ();
+				$body .= "The email address you have entered is not valid.";
 			} else {
-				echo "email ok <br>";
+				$body .= "email ok <br>";
 				if (strlen($u) < 3 || strlen($u) > 16) {
-					echo "Username must be between 3 and 16 characters";
-					exit ();
+					$body .= "Username must be between 3 and 16 characters";
 				} else {
-					echo "username length ok <br>";
+					$body .= "username length ok <br>";
 					if (is_numeric($u[0])) {
-						echo 'Username cannot begin with a number';
-						exit ();
+						$body .= 'Username cannot begin with a number';
 					} else {
-						echo "username first char ok <br>";
+						$body .= "username first char ok <br>";
 						if( $p != $p2 ) { 
-							echo 'Passwords do not match';
-							exit();
+							$body .= 'Passwords do not match';
 						} else {
-							echo "passwords match ok <br>";
+							$body .= "passwords match ok <br>";
 							// END FORM DATA ERROR HANDLING
 							// Begin Insertion of data into the database
 							// Hash the password and apply your own mysterious unique salt
@@ -70,17 +63,16 @@ if (isset($_POST['username'])) {
 							$query = $db_conx->query($sql);
 							$signup_ok = $db_conx->affected_rows;
 							if ( $signup_ok > 0 ) {
-								echo "Signup successful";
+								$body .= "Signup successful";
 								// Email the user their activation link
 								/*if (send_activation_email($e, $signup_key)) {
-									echo "Signup Successful.  Please check your email to activate your account";
+									$body .= "Signup Successful.  Please check your email to activate your account";
 								} else {
-									echo "Oops, and error occurred.  Please wait a few minutes and try again.";
+									$body .= "Oops, and error occurred.  Please wait a few minutes and try again.";
 								}*/
 							} else {
-								echo "Oops, an error occurred.  Please try again. <br>";
-								echo $db_conx->error;
-								exit();
+								$body .= "Oops, an error occurred.  Please try again. <br>";
+								$body .= $db_conx->error;
 							}
 						}
 					}
@@ -88,25 +80,8 @@ if (isset($_POST['username'])) {
 			}
 		}
 	}
-} else {
-?>
-<div id="pageMiddle">
-  <h3>Sign Up Here</h3>
-  <form name="signupform" method="post" action="signup.php">
-    <table>
-        <tr><td>Username:</td><td><input name="username" type="text" maxlength="16"></td></tr>
-
-    <tr><td>First Name:</td><td><input name="firstname" type="text" maxlength="30"></td></tr>
-	<tr><td>Last Name:</td><td><input name="lastname" type="text" maxlength="30"></td></tr>
-
-    <tr><td>Email Address:</td><td><input name="email" type="text" maxlength="88"></td></tr>
-    <tr><td>Create Password:</td><td><input name="pass1" type="password" maxlength="16"></td></tr>
-    <tr><td>Confirm Password:</td><td><input name="pass2" type="password" maxlength="16"></td></tr>
-    
-    <tr><td><input type="submit" name="Submit" value="Create Account"></td></tr>
-    </table>
-  </form>
-</div>
-<?php } 
+} else { 
+    $body .= '<div id="pageMiddle"><h3>Sign Up Here</h3><form name="signupform" method="post" action="signup.php"><table><tr><td>Username:</td><td><input name="username" type="text" maxlength="16"></td></tr><tr><td>First Name:</td><td><input name="firstname" type="text" maxlength="30"></td></tr><tr><td>Last Name:</td><td><input name="lastname" type="text" maxlength="30"></td></tr><tr><td>Email Address:</td><td><input name="email" type="text" maxlength="88"></td></tr><tr><td>Create Password:</td><td><input name="pass1" type="password" maxlength="16"></td></tr><tr><td>Confirm Password:</td><td><input name="pass2" type="password" maxlength="16"></td></tr><tr><td><input type="submit" name="Submit" value="Create Account"></td></tr></table></form></div>'; 
+} 
 include_once "footer.php";
- ?>
+?>
