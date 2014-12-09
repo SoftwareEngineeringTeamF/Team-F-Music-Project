@@ -10,6 +10,7 @@ session_start();
 //all of our important database functions are in here.
 require 'general.php';
 require 'playlist.php';
+require 'user.php';
 //require 'password.php';
 
 include_once "header.php";
