@@ -1,5 +1,6 @@
 <?php
 require 'init.php';
+require 'connect.php';
 
 $sql = "SELECT * FROM users where activated='1' ORDER BY username";
 $query= $db_conx->query($sql);
