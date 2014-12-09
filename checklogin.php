@@ -19,9 +19,9 @@ if (!isset ($_POST['myusername']) || !isset ($_POST['mypassword'])) {
 
     $_SESSION['user'] = new User();
     if ( $_SESSION['user']->checkLogin( $myusername, $mypassword ) ) {
-        echo "Login Success";
+        $body .= "Login Success";
 	} else {
-        echo "<p><strong>Wrong Username or Password</strong></p><p>Redirect to Login page in 5s</p></center>";
+        $body .= "<p><strong>Wrong Username or Password</strong></p><p>Redirect to Login page in 5s</p></center>";
 	}
 }
 

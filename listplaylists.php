@@ -43,6 +43,6 @@ if(!isset($_GET[p])){
 
     }
 }
-    echo $playlistlist;
+    $body .= $playlistlist;
 	include_once "footer.php";
 ?>

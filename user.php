@@ -59,8 +59,7 @@ class User {
         }
         
 	}
-	
-	
+		
 	public function refresh() {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
@@ -100,8 +99,8 @@ class User {
 		$sql = "UPDATE users SET username='" . $username . "' WHERE userid='" . $this->userid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			die();
-		} 
+			return false;
+		} else { return true; }
 		//$this->refresh();
 	}
     
@@ -117,9 +116,8 @@ class User {
 		$sql = "UPDATE users SET email='" . $email . "' WHERE userid='" . $this->userid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
 	
 	public function setPassword( $password ) {
@@ -134,9 +132,8 @@ class User {
 		$sql = "UPDATE users SET password='" . $password . "' WHERE userid='" . $this->userid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
 	
 	public function setFirstname( $firstname ) {
@@ -151,9 +148,8 @@ class User {
 		$sql = "UPDATE users SET firstname='" . $firstname . "' WHERE userid='" . $this->userid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
     
     public function setLastname( $lastname ) {
@@ -168,9 +164,8 @@ class User {
 		$sql = "UPDATE users SET lastname='" . $lastname . "' WHERE userid='" . $this->userid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
     
 	public function delete() {

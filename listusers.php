@@ -14,17 +14,10 @@ if( $query->num_rows > 0 ) {
 		$rows++;
 	}
 	$userlist .= "</table>";
-
-?>
-
-<body>
-<div id="middle page" style="margin-left: 200px;">
-<br>
-<?php 
-	echo "Number of rows: " . $query->num_rows . "<br>";
-	echo $userlist;
+	$body .= "Number of rows: " . $query->num_rows . "<br>";
+	$body .= $userlist;
 } else {
-	echo "NO USERS";
+	$body .= "NO USERS";
 }
 
 	include_once "footer.php";

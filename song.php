@@ -10,7 +10,6 @@ class Song {
 	}
 	
 	public function load( $songid ) {
-        //echo "[SONG] Loading song ID: " . $songid . "<br>";
 		$this->songid = $songid;	
 		$this->refresh();
 	}
@@ -30,7 +29,6 @@ class Song {
 		$sql = "INSERT INTO songs( songid, ownerid, title, artist ) VALUES ( NULL, '" . $ownerid . "', '" . $title . "', '" . $artist . "')";
 		$result = $db_conx->query($sql);
 		$this->songid = $db_conx->insert_id;
-		//echo "[SONG] CREATE ID: " . $this->songid . "<br>";
 		return $this->songid;
 	}
 	
@@ -39,22 +37,16 @@ class Song {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
 		if ($db_conx->connect_errno > 0) {
-			echo 'Unable to connect to database [' . $db_conx->connect_error . ']';
 			die();
 		}
 		
-		//echo "[SONG] REFRESHING ID: " . $this->songid . "<br>";
 		$sql = "SELECT * from songs WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
-		//echo "[SONG] MATCHING IDS FOUND: " . $result->num_rows . "<br>";
 		if($result->num_rows == 1) {
 			$row = $result->fetch_assoc();
 			$this->title = $row['title'];
-			//echo "[SONG] REFRESH TITLE: " . $this->title . "<BR>";
 			$this->artist = $row['artist'];
-			//echo "[SONG] REFRESH ARTIST: " . $this->artist . "<BR>";
 			$this->ownerid = $row['ownerid'];
-			//echo "[SONG] REFRESH OWNERID: " . $this->ownerid . "<BR>";
 		} else {
 			$this->songid = NULL;
 			$this->ownerid = NULL;
@@ -75,10 +67,8 @@ class Song {
 		$sql = "UPDATE songs SET ownerid='" . $ownerid . "' WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			echo "[SONG] FAILED: setOwnerId";
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
 	
 	public function setArtist( $artist ) {
@@ -93,10 +83,8 @@ class Song {
 		$sql = "UPDATE songs SET artist='" . $artist . "' WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			echo "[SONG] FAILED: setArtist";
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
 	
 	public function setTitle( $title ) {
@@ -111,11 +99,10 @@ class Song {
 		$sql = "UPDATE songs SET title='" . $title . "' WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			echo "[SONG] FAILED: setTitle";
-			die();
-		} 
-		//$this->refresh();
+			return false;
+		} else { return true; }
 	}
+    
 	public function delete() {
 		$db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
 		// Evaluate the connection
@@ -127,31 +114,23 @@ class Song {
 		$sql = "DELETE FROM songs WHERE songid='" . $this->songid ."'";
 		$result = $db_conx->query($sql);
 		if($db_conx->affected_rows == 0) {
-			echo "[SONG] FAILED: delete";
-			die();
+			return false;
 		} else {
 			$this->songid = NULL;
 			$this->ownerid = NULL;
 			$this->artist = NULL;
 			$this->title = NULL;
+            return true;
 		} 
 	}
 		
-	public function getArtist() {
-		return $this->artist;
-	}
+	public function getArtist() { return $this->artist;	}
 	
-	public function getTitle() {
-		return $this->title;
-	}
+	public function getTitle() { return $this->title; }
 	
-	public function getOwnerId() {
-		return $this->ownerid;
-	}
+	public function getOwnerId() { return $this->ownerid; }
 	
-	public function getSongId() {
-		return $this->songid;
-	}
+	public function getSongId() { return $this->songid;	}
 }
 ?>
 
