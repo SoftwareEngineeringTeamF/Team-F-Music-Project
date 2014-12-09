@@ -14,10 +14,11 @@ if(!isset($_GET[p])){
 
     $sql = "SELECT * FROM playlists WHERE ownerid='" . $u . "' ORDER BY playlistid";
     $query= $db_conx->query($sql);
-    $playlistlist .= "<table><tr><th>playlistid</th><th>ownerid</th><th>public</th><th>title</th><th>description</tr>";
+    $playlistlist .= "<table><tr><th>public</th><th>title</th><th>description</tr>";
     if( $query->num_rows > 0 ) {
         while ( $row=$query->fetch_assoc() ) {
-            $playlistlist .= "<tr><td>" . $row['playlistid'] . "</td><td>" . $row['ownerid'] . "</td><td>" . $row['public'] . "</td><td><a href=\"./listplaylists.php?p=" . $row['playlistid'] . "\">" . $row['title'] . "</td><td>" . $row['description'] . "</td></tr>";
+			if($row['public']) $p = "TRUE"; else $p = "";
+            $playlistlist .= "<tr><td>". $p ."</td><td><a href=\"./listplaylists.php?p=" . $row['playlistid'] . "\">" . $row['title'] . "</td><td>" . $row['description'] . "</td></tr>";
         }
         $playlistlist .= "</table>";
         $playlistlist .= "Number of rows: " . $query->num_rows . "<br>";
