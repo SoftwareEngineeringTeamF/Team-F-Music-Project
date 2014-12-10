@@ -1,0 +1,36 @@
+@{
+    ViewBag.Title = "ProfilePage";
+}
+
+<link rel="stylesheet" href="~/Content/Site.css" media="screen" />
+
+<div class="player">
+    <audio controls style="margin-left: 33%; margin-top: 10px;">
+        @*<source src="horse.ogg" type="audio/ogg">*@
+        <source src="~/Media/Modest Mouse - Dashboard.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
+<div class="space">
+    <a class="headers1" style="padding-left: 80px;">Title</a>
+    <a class="headers" style="padding-right: 100px;">Artist</a>
+    <a class="headers" style="padding-right: 50px;">Time</a>
+    <a class="headers" style="padding-right: 160px;">Album</a>
+    <a class="headers">Genre</a>
+</div>
+
+<div style="position: relative; margin-left: 80px;">
+    <a class="headers1" style="padding-left: 0px;">Dashboard</a>
+    <a class="headers" style="padding-right: 100px; left: -40px;">Modest Mouse</a>
+    <a class="headers" style="padding-right: 50px; left: -95px;">0:04:12</a>
+    <a class="headers" style="padding-right: 100px; left: -115px;">We Were Dead Before The..</a>
+    <a class="headers" style="left: -190px;">Alternative</a>
+</div>
+
+<div class="playlists">
+    <h1 class="top">Library</h1>
+    <h1 class="hover">Music</h1>
+    <h1 style="font-family: 'Times New Roman'; color: grey;font-size: 12px; padding-top: 20px;">Playlists</h1>
+    <h1 class="hover">Recently Added</h1>
+</div>
