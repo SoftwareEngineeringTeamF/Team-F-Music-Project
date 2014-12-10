@@ -33,9 +33,11 @@ class Playlist {
 		$this->description = $description;
 		$this->num_songs = 0;
 		
-		$sql = "INSERT INTO playlists( playlistid, ownerid, public, title, description ) VALUES ( NULL, '".$ownerid."', '".$public."', '".$title."', '".$artist."')";
-		$result = $db_conx($sql);
-		$this->playlistid = $db_conx->insert_id;
+		$sql = "INSERT INTO playlists( playlistid, ownerid, public, title, description ) VALUES ( NULL, '" . $ownerid . "', '" . $public . "', '" . $title . "', '" . $description . "')";
+		if( !$db_conx->query($sql)) { return false; } else {
+            $this->playlistid = $db_conx->insert_id;
+            return true;
+        }
 	}
 	
 	public function refresh() {
@@ -68,6 +70,52 @@ class Playlist {
 		}
 		
 	}
+    
+    public function removeSong( $index ) {
+        $db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
+		// Evaluate the connection
+		if ($db_conx->connect_errno > 0) {
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			die();
+		}
+		      
+        
+        if( $index < 0 || $index >= $this->num_songs) {
+            return false;
+        } else {
+            $sql = "SELECT memberid from members WHERE playlistid='". $this->playlistid ."' AND listindex='". $index ."'";
+            $result = $db_conx->query($sql);
+            $row = $result->fetch_assoc();
+            $mid = $row['memberid'];
+            for( $i=$index; $i < ($this->num_songs - 1); $i++ ) {
+               $this->demoteSong($i);
+            }
+            $sql = "DELETE from members WHERE memberid='" . $mid . "'";
+            if($db_conx->query($sql)) {
+                $this->num_songs--;
+                return true;
+            } else
+                return false;
+        }
+        
+    }
+    
+    public function addSong( $songid ) {
+        $db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");
+		// Evaluate the connection
+		if ($db_conx->connect_errno > 0) {
+			$body .= 'Unable to connect to database [' . $db_conx->connect_error . ']';
+			die();
+		}
+        
+        $sql = "INSERT INTO members( memberid, songid, playlistid, listindex ) VALUES ( NULL, '" . $songid . "', '" . $this->playlistid . "', '" . $this->num_songs . "')";
+		if( !$db_conx->query($sql)) { var_dump($sql); return false; } else {
+            $this->playlistid = $db_conx->insert_id;
+            $this->songs[] = $songid;
+            $this->num_songs++;
+            return true;
+        }
+    }
 		
 	public function setTitle( $title ) {
         $db_conx = new mysqli("localhost", "root", "TeamFTeamF", "teamf");

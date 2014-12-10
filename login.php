@@ -7,7 +7,7 @@ if (isset ($_SESSION['user'])) {
 	$body .=  "Already logged in. Redirecting.";
     header( "Refresh:5; url=./index.php" );
 } else {
-    $body .= '<form name="form1" method="post" action="checklogin.php';
+    $body .= '<h2>TeamF Project Login</h2><form name="form1" method="post" action="checklogin.php';
     if(isset($_GET['r'])) $body .= "?r=" . $_GET['r'];
     $body .= '">';
     if(isset($_GET['r'])) $body .= "<tr><td><strong>Please Login to Continue</strong></td></tr>";

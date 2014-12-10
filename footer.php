@@ -10,8 +10,9 @@ $stime)*1000000,
 }
 ?>
 <br/ >
-<a href="info.php">phpInfo</a> ~ <a href="listusers.php">LIST USERS</a> ~ <a href="listsongs.php">LIST SONGS</a> ~ <a href="listplaylists.php">LIST PLAYLISTS</a></center>
+<a href="info.php">phpInfo</a> ~ <a href="listusers.php">LIST USERS</a> ~ <a href="listsongs.php">LIST SONGS</a> ~ <a href="listplaylists.php">LIST PLAYLISTS</a> ~ <a href="reset.php">RESET DB</a></center>
 </div>
 </div>
+</td></tr></table></center>
 </body>
 </html>

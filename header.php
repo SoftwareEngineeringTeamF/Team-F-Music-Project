@@ -1,6 +1,6 @@
 <?php
 if(!isset($title)) $title = "Team F";
- $body .= '<!doctype html><html lang=en><head><meta charset=\"utf-8\"/><title>';
+ $body = '<!doctype html><html lang=en><head><meta charset=\"utf-8\"/><title>';
  $body .= $title;
  $body .= '</title><style>body { color: #666; font-family: sans-serif; line-height: 1.4; }h1 { color: #444; font-size: 1.2em; padding: 14px 2px 12px; margin: 0px; }' .
 		'h1 em { font-style: normal; color: #999; }a { color: #888; text-decoration: none; } #wrapper { width: 400px; margin: 40px auto; } ol { padding: 0px; margin: 0px; list-style: decimal-leading-zero inside; color: #ccc; width: 460px; border-top: 1px solid #ccc; font-size: 0.9em; }' .
@@ -14,5 +14,5 @@ $body .= '#shortcuts { position: fixed; bottom: 0px; width: 100%; color: #666; f
 		'#shortcuts em { font-style: normal; background: #d3d3d3; padding: 3px 9px; position: relative; left: -3px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }';
 
     $body .= '@media screen and (max-device-width: 480px) { #wrapper { position: relative; left: -3%; } #shortcuts { display: none; } }';
-    $body .= '</style><script src="./jquery.min.js"></script><script src="./audio.min.js"></script><script src="./player.js"></script></head><body>';
+    $body .= '</style><script src="./jquery.min.js"></script><script src="./audio.min.js"></script><script src="./player.js"></script></head><body><center><table><tr><td>';
 ?>

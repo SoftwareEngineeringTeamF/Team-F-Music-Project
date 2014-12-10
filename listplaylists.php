@@ -2,14 +2,14 @@
 include_once 'init.php';
 include_once 'connect.php';
 $playlistlist = "";
-if(!isset($_GET[p])){
+if(!isset($_GET['p'])){
 
-    $sql = "SELECT * FROM playlists ORDER BY playlistid";
+    $sql = "SELECT * FROM playlists WHERE public='1' ORDER BY playlistid";
     $query= $db_conx->query($sql);
-    $playlistlist .= "<table><tr><th>playlistid</th><th>ownerid</th><th>public</th><th>title</th><th>description</tr>";
+    $playlistlist .= "<h2>Public Playlists</h2><h4>Click Title to View</h4><table><tr><th>title</th><th>description</th></tr>";
     if( $query->num_rows > 0 ) {
         while ( $row=$query->fetch_assoc() ) {
-            $playlistlist .= "<tr><td>" . $row['playlistid'] . "</td><td>" . $row['ownerid'] . "</td><td>" . $row['public'] . "</td><td><a href=\"./listplaylists.php?p=" . $row['playlistid'] . "\">" . $row['title'] . "</td><td>" . $row['description'] . "</td></tr>";
+            $playlistlist .= "<tr><td><a href=\"./index.php?o=pp&p=" . $row['playlistid'] . "\">" . $row['title'] . "</td><td>" . $row['description'] . "</td></tr>";
         }
         $playlistlist .= "</table>";
         $playlistlist .= "Number of rows: " . $query->num_rows . "<br>";
@@ -18,12 +18,12 @@ if(!isset($_GET[p])){
         $playlistlist .= "NO PLAYLISTS";
     }
 } else {
-    $sql = "SELECT * FROM playlists WHERE playlistid= '" . $_GET['p'] . "' LIMIT 1";
+    $sql = "SELECT * FROM playlists WHERE public='1' AND playlistid= '" . $_GET['p'] . "' LIMIT 1";
     $query= $db_conx->query($sql);
     $playlistlist .= "";
     if( $query->num_rows > 0 ) {
         while ( $row=$query->fetch_assoc() ) {
-            $playlistlist .= '<div id="wrapper"><h1>' . $row['title'].  '</h1><audio preload></audio><ol>';
+            $playlistlist .= '<div id="wrapper"><h1>Public Playlist: ' . $row['title'].  '</h1><audio preload></audio><ol>';
         }
         
         $sql = "SELECT songs.artist, songs.title, songs.songid, members.listindex FROM songs JOIN members on songs.songid = members.songid WHERE members.playlistid = '" . $_GET['p'] . "'  ORDER BY members.listindex";
@@ -41,6 +41,9 @@ if(!isset($_GET[p])){
             $playlistlist .= "</ol></div>NO SONGS IN PLAYLIST";
         }
 
+    }
+    else {
+        $playlistlist .= "NO PLAYLISTS";
     }
 }
     $body .= $playlistlist;
