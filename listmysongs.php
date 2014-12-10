@@ -26,7 +26,7 @@ $d2 .= '</select><input type=submit value="Add Song"></form>';
 
 $sql = "SELECT * FROM songs WHERE ownerid='" . $u . "' ORDER BY songid";
 $query= $db_conx->query($sql);
-$userlist= "<table><tr><th>artist</th><th></th><th>title</th><th>Add to A Playlist</th><th>delete song</th><th>preview</th></tr>";
+$userlist= "<h2>Song Management</h2><table><tr><th>artist</th><th></th><th>title</th><th>Add to A Playlist</th><th>delete song</th><th>preview</th></tr>";
 if( $query->num_rows > 0 ) {
 	while ( $row=$query->fetch_assoc() ) {
         $d1 = "<form name=\"add\" method=post action=\"./index.php?o=mv&v2=a&v3=". $row['songid'] ."\"><select name=pid>";
